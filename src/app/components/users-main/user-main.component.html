@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="container-header">
+        <div class="header">
+            <p class="heading">Users</p>
+            <p class="sub-heading">view and manage users</p>
+        </div>
+        <div class="search-bar" *ngIf="showSearchBar">
+                <input type="text" placeholder="Search users..."   class="search-input" [(ngModel)]="searchValue" (ngModelChange)="onSearchChange()">
+                <button class="search-button">
+                    <i class="fa fa-search"></i> 
+                </button>
+        </div>
+        <div class="add-user-btn">
+            <button [disabled]="addUserDisabled"  type="submit" (click)="toNewUser()" >Add New User</button>
+        </div>
+    </div>
+
+    <div class="container-body">
+        @if (searchValue) {
+            <span>Search for "{{searchValue}}"</span>
+        }
+        @if (successMessage) {
+            <div class="successMessage" [innerHTML]="successMessage">
+            </div>
+        }
+        <div >
+            <br>
+        <router-outlet/>
+        </div>
+    </div>
+</div>
